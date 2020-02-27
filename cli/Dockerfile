@@ -2,23 +2,23 @@
 # 20.04 = focal
 FROM ubuntu:20.04
 
-# Update packages
-ENV REFRESHED_AT 2020
-RUN apt-get update
-
-# Install prerequisites for fileconverter
-ENV DEBIAN_FRONTEND noninteractive
-ENV DEBIAN_FRONTEND teletype
-RUN apt-get install -y \
-    php-cli php-xsl php-dev php-pear php-curl php-gd \
-    libmcrypt-dev python-pip imagemagick \
-	phantomjs jpegoptim wkhtmltopdf xvfb yui-compressor pandoc \
-    npm ruby-sass optipng htmldoc pdftk zip html2text \
-    git uuid-dev make
+# Update packages (bust cache)
+ENV REFRESHED_AT 2020-02-27
 
 # https://stackoverflow.com/questions/49049949/how-to-accept-license-agreement-during-docker-build
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND teletype
 ENV ACCEPT_EULA Y
-RUN apt-get install -y msttcorefonts
+
+# Install prerequisites for fileconverter
+RUN apt-get update\
+    && apt-get install -y \
+          php-cli php-xsl php-dev php-pear php-curl php-gd \
+          libmcrypt-dev python-pip imagemagick \
+	      phantomjs jpegoptim wkhtmltopdf xvfb yui-compressor pandoc \
+          npm ruby-sass optipng htmldoc pdftk zip html2text \
+          git uuid-dev make msttcorefonts \
+    && rm -rf /var/lib/apt/lists/*
 
 # Missing: python-reportlab python-gpgme ruby-compass
 
@@ -40,4 +40,4 @@ RUN git clone https://github.com/brainite/php-file-converters.git /usr/share/fil
 RUN mkdir /work
 WORKDIR /work
 VOLUME ["/work"]
-CMD ["fileconverter"]
+ENTRYPOINT ["fileconverter"]
