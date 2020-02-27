@@ -2,16 +2,12 @@
 
 ## Build/Test CLI
 
-### Use latest version from Docker Hub
-
 ```
+# Use latest version from Docker Hub
 docker pull brainite/fileconverter
 docker run -v $(pwd):/work brainite/fileconverter input.jpg output.png
-```
 
-### Develop/Build
-
-```
+# Develop/Build
 cd {REPO_PATH}/cli
 docker build -t brainite/fileconverter:devel .
 docker run brainite/fileconverter:devel list extension-table
