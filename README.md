@@ -12,4 +12,5 @@ cd {REPO_PATH}/cli
 docker build -t brainite/fileconverter:devel .
 docker run brainite/fileconverter:devel list extension-table
 docker run -v $(pwd):/work brainite/fileconverter:devel test.jpg test.png
+docker push brainite/fileconverter:devel
 ```
