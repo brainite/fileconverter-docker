@@ -36,6 +36,9 @@ RUN git clone https://github.com/brainite/php-file-converters.git /usr/share/fil
     && cd /usr/share/fileconverter && composer install \
     && ln -s /usr/share/fileconverter/bin/fileconverter /usr/local/bin/fileconverter
 
+# Update configurations
+ADD etc/ImageMagick-6/policy.xml /etc/ImageMagick-6/policy.xml
+
 # Allow the system to start in /work.    
 RUN mkdir /work
 WORKDIR /work
