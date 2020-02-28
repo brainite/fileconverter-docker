@@ -32,6 +32,7 @@ RUN pecl channel-update pecl.php.net \
 RUN pip install xhtml2pdf
 
 # Clone php-file-converters
+ENV REFRESHED_AT 2020-02-28
 RUN git clone https://github.com/brainite/php-file-converters.git /usr/share/fileconverter \
     && cd /usr/share/fileconverter && composer install \
     && ln -s /usr/share/fileconverter/bin/fileconverter /usr/local/bin/fileconverter
