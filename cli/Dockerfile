@@ -39,6 +39,7 @@ RUN git clone https://github.com/brainite/php-file-converters.git /usr/share/fil
 
 # Update configurations
 ADD etc/ImageMagick-6/policy.xml /etc/ImageMagick-6/policy.xml
+ENV MAGICK_CONFIGURE_PATH /etc/ImageMagick-6
 
 # Allow the system to start in /work.    
 RUN mkdir /work
