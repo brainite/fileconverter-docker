@@ -13,14 +13,14 @@ ENV ACCEPT_EULA Y
 # Install prerequisites for fileconverter
 RUN apt-get update\
     && apt-get install -y \
-          php-cli php-xsl php-dev php-pear php-curl php-gd \
+          php-cli php-dev php-pear php-curl php-gd \
           libmcrypt-dev python-pip imagemagick \
 	      phantomjs jpegoptim wkhtmltopdf xvfb yui-compressor pandoc \
           npm ruby-sass optipng htmldoc pdftk zip html2text \
           git uuid-dev make msttcorefonts \
     && rm -rf /var/lib/apt/lists/*
 
-# Missing: python-reportlab python-gpgme ruby-compass
+# Missing: python-reportlab python-gpgme ruby-compass php-xsl
 
 # PHP utilities
 RUN pecl channel-update pecl.php.net \
