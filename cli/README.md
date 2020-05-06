@@ -2,7 +2,8 @@
 
 ```
 docker pull brainite/fileconverter
-docker run -v $(pwd):/work brainite/fileconverter input.jpg output.png
+docker run -it --entrypoint=/bin/bash brainite/fileconverter:devel
+docker run -v "$(pwd):/work" brainite/fileconverter input.jpg output.png
 ```
 
 ## More Information and Advanced Usage

@@ -18,6 +18,7 @@ RUN apt-get update \
 	      phantomjs jpegoptim wkhtmltopdf xvfb yui-compressor pandoc \
           npm ruby-sass optipng htmldoc pdftk zip html2text \
           git uuid-dev make msttcorefonts \
+          libemail-outlook-message-perl unoconv \
     && rm -rf /var/lib/apt/lists/*
 
 # Missing: python-reportlab python-gpgme ruby-compass php-xsl
@@ -32,7 +33,7 @@ RUN pecl channel-update pecl.php.net \
 RUN pip3 install xhtml2pdf
 
 # Clone php-file-converters
-ENV REFRESHED_AT 2020-02-28
+ENV REFRESHED_AT 2020-05-06
 RUN git clone https://github.com/brainite/php-file-converters.git /usr/share/fileconverter \
     && cd /usr/share/fileconverter && composer install \
     && ln -s /usr/share/fileconverter/bin/fileconverter /usr/local/bin/fileconverter
