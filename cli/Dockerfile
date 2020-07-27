@@ -3,8 +3,7 @@
 FROM ubuntu:20.04
 
 # Update packages (bust cache)
-ENV REFRESHED_AT 2020-03-30
-
+ENV REFRESHED_AT 2020-07-27
 # https://stackoverflow.com/questions/49049949/how-to-accept-license-agreement-during-docker-build
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBIAN_FRONTEND teletype
@@ -13,7 +12,7 @@ ENV ACCEPT_EULA Y
 # Install prerequisites for fileconverter
 RUN apt-get update \
     && apt-get install -y \
-          php-cli php-xml php-dev php-pear php-curl php-gd \
+          php-cli php-xml php-dev php-pear php-curl php-gd php-zip \
           libmcrypt-dev python3-pip imagemagick \
 	      phantomjs jpegoptim wkhtmltopdf xvfb yui-compressor pandoc \
           npm ruby-sass optipng htmldoc pdftk zip html2text \
@@ -33,7 +32,7 @@ RUN pecl channel-update pecl.php.net \
 RUN pip3 install xhtml2pdf
 
 # Clone php-file-converters
-ENV REFRESHED_AT 2020-05-06
+ENV REFRESHED_AT 2020-07-27
 RUN git clone https://github.com/brainite/php-file-converters.git /usr/share/fileconverter \
     && cd /usr/share/fileconverter && composer install \
     && ln -s /usr/share/fileconverter/bin/fileconverter /usr/local/bin/fileconverter
