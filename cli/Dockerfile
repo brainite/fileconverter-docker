@@ -12,7 +12,7 @@ ENV ACCEPT_EULA Y
 # Install prerequisites for fileconverter
 RUN apt-get update \
     && apt-get install -y \
-          php-cli php-xml php-dev php-pear php-curl php-gd php-zip \
+          php-cli php-xml php-dev php-pear php-curl php-gd php-zip php-imagick \
           libmcrypt-dev python3-pip imagemagick \
 	      phantomjs jpegoptim wkhtmltopdf xvfb yui-compressor pandoc \
           npm ruby-sass optipng htmldoc pdftk zip html2text \
